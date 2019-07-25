@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for test excersise",
+  "private": true,
+  "author": "Artjoms Mihailovs <art.mihailovs@gmail.com>",
+  "homepage": "https://github.com/artyMh/ubnt-test-excersise#readme",
+  "email": "art.mihailovs@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artyMh/ubnt-test-excersise.git"
+  },
+  "engines": {
+    "node": ">=10.16.0",
+    "npm": ">=6.9.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.1.1"
+  }
+}
