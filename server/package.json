@@ -16,11 +16,17 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "tsc && node dist/index.js",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'"
   },
   "keywords": [],
   "license": "ISC",
   "dependencies": {
     "ws": "^7.1.1"
+  },
+  "devDependencies": {
+    "@types/ws": "^6.0.2",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   }
 }
