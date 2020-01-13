@@ -7,7 +7,7 @@ import Notification from './notification';
     notifications: state.main.notifications
   }),
 })
-export default class Notifications extends React.PureComponent {
+class Notifications extends React.PureComponent {
   render() {
     const { notifications } = this.props;
 
@@ -28,3 +28,5 @@ export default class Notifications extends React.PureComponent {
     );
   }
 }
+
+export default Notifications;

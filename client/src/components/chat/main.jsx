@@ -17,7 +17,7 @@ import ChatMessageForm from './chat-message-form';
     clearNotifications: () => dispatch(clearNotifications())
   })
 })
-export default class Chat extends React.PureComponent {
+class Chat extends React.PureComponent {
 
   chatWebSocket = null;
 
@@ -195,3 +195,5 @@ export default class Chat extends React.PureComponent {
     );
   }
 }
+
+export default Chat;

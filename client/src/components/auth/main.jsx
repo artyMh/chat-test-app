@@ -14,7 +14,7 @@ import NicknameForm from './nickname-form';
     clearNotifications: () => dispatch(clearNotifications())
   })
 })
-export default class Auth extends React.PureComponent {
+class Auth extends React.PureComponent {
 
   submitNickname = (nickname) => {
     const { clearNotifications } = this.props;
@@ -35,3 +35,5 @@ export default class Auth extends React.PureComponent {
     );
   }
 }
+
+export default Auth;

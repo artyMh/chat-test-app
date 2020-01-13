@@ -22,10 +22,10 @@ export default function reducer(inputState = initialState, action) {
       return { ...initialState };
 
     case Actions.ADD_NOTIFICATION:
-      return { ...inputState, notifications: [...inputState.notifications, action.payload ] }
+      return { ...inputState, notifications: [...inputState.notifications, action.payload] };
 
     case Actions.CLEAR_NOTIFICATIONS:
-        return { ...inputState, notifications: [] }
+        return { ...inputState, notifications: [] };
 
     default:
       return inputState;

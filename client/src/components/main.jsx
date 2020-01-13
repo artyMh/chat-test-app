@@ -13,7 +13,7 @@ import Footer from './footer';
     setInitialState: (newState) => dispatch(setInitialState(newState))
   })
 })
-export default class Main extends React.PureComponent {
+class Main extends React.PureComponent {
   render() {
     const { nickname, children } = this.props;
 
@@ -29,3 +29,5 @@ export default class Main extends React.PureComponent {
     );
   }
 }
+
+export default Main;
