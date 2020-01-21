@@ -4,8 +4,8 @@ import moment from 'moment';
 import connect from '../../decorators/connect';
 import { addNotification } from '../../redux/actions/main';
 import Routes from '../../routing/routes';
-import WsCloseCode from '../../enums/websocket-close-codes';
-import WsMessageCode from '../../enums/websocket-messages-codes';
+import WsCloseCode from '../../types/websocket-close-codes';
+import WsMessageCode from '../../types/websocket-messages-codes';
 import ChatMessage from './message';
 import ChatMessageForm from './chat-message-form';
 
