@@ -20,15 +20,34 @@ class App extends React.PureComponent {
     children: PropTypes.node
   };
 
+  state = {
+    hasError: false
+  };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error application!', error, errorInfo);
+  }
+
   render() {
     const { children } = this.props;
+    const { hasError } = this.state;
 
     return (
       <>
         <Header />
         <main role="main" className="container">
-          <Notifications />
-          {children}
+          {hasError ? (
+            <h1 className="h3 mb-3 font-weight-normal text-center mt-4">Something went wrong!</h1>
+          ) : (
+            <>
+              <Notifications />
+              {children}
+            </>
+          )}
         </main>
         <Footer />
       </>

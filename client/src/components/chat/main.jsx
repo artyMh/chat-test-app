@@ -20,7 +20,7 @@ import ChatMessageForm from './chat-message-form';
 class Chat extends React.PureComponent {
 
   static propTypes = {
-    history: PropTypes.array.isRequired,
+    history: PropTypes.object.isRequired,
     nickname: PropTypes.string.isRequired,
     addNotification: PropTypes.func.isRequired
   };
@@ -31,6 +31,32 @@ class Chat extends React.PureComponent {
     wsOpened: false,
     messages: []
   };
+
+  componentDidMount() {
+    const { nickname, addNotification, history } = this.props;
+
+    if (!nickname) {
+      addNotification({
+        type: 'danger',
+        message: 'You din\'t entered your nickname.'
+      });
+      history.push(Routes.HOME);
+    } else {
+      this._connectToWebSocket();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.chatWebSocket) {
+      const { readyState } = this.chatWebSocket;
+    
+      // Closing only if socket have connection or connects with server
+      if (readyState === WebSocket.CONNECTING && readyState !== WebSocket.OPEN) {
+        console.log('Closing socket because it is open');
+        this.chatWebSocket.close();
+      }
+    }
+  }
 
   submitMessage = (message) => {
     const { nickname } = this.props;
@@ -163,30 +189,6 @@ class Chat extends React.PureComponent {
         </div>
       </Fragment>
     );
-  }
-
-  componentDidMount() {
-    const { nickname, addNotification, history } = this.props;
-
-    if (!nickname) {
-      addNotification({
-        type: 'danger',
-        message: 'You din\'t entered your nickname.'
-      });
-      history.push(Routes.HOME);
-    } else {
-      this._connectToWebSocket();
-    }
-  }
-
-  componentWillUnmount() {
-    const { readyState } = this.chatWebSocket;
-    
-    // Closing only if socket have connection or connects with server
-    if (readyState === WebSocket.CONNECTING && readyState !== WebSocket.OPEN) {
-      console.log('Closing socket because it is open');
-      this.chatWebSocket.close();
-    }
   }
 
   render() {

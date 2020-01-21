@@ -17,7 +17,7 @@ import NicknameForm from './nickname-form';
 class Auth extends React.PureComponent {
 
   static propTypes = {
-    history: PropTypes.array.isRequired,
+    history: PropTypes.object.isRequired,
     nickname: PropTypes.string,
     setNickname: PropTypes.func.isRequired,
     clearNotifications: PropTypes.func.isRequired
@@ -35,7 +35,7 @@ class Auth extends React.PureComponent {
     return (
       <div className="row justify-content-md-center mb-3">
         <div className="col-sm-12 col-md-6">
-          <h1 className="h3 mb-3 font-weight-normal text-center mt-4" onClick={this.seeeet}>Enter your nickname</h1>
+          <h1 className="h3 mb-3 font-weight-normal text-center mt-4">Enter your nickname</h1>
           <NicknameForm submitNickname={this.submitNickname} />
         </div>
       </div>
