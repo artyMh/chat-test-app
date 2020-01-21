@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const ChatMessageForm = memo(function ChatMessageForm({ submitMessage }) {
+const ChatMessageForm = ({ submitMessage }) => {
   const [ message, setMessage ] = useState('');
 
   const submit = (e) => {
@@ -18,11 +18,15 @@ const ChatMessageForm = memo(function ChatMessageForm({ submitMessage }) {
         </div>
         <input id="message" type="text" value={message} onChange={e => setMessage(e.target.value)} className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
         <div className="input-group-append">
-          <button className="btn btn-primary" type="button" id="button-addon2" type="submit" disabled={message.length < 1}>Send</button>
+          <button className="btn btn-primary" id="button-addon2" type="submit" disabled={message.length < 1}>Send</button>
         </div>
       </div>
     </form>
   );
-});
+};
 
-export default ChatMessageForm;
+ChatMessageForm.propTypes = {
+  submitMessage: PropTypes.func.isRequired
+};
+
+export default memo(ChatMessageForm);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import connect from '../../decorators/connect';
 import Notification from './notification';
 
@@ -8,6 +9,11 @@ import Notification from './notification';
   }),
 })
 class Notifications extends React.PureComponent {
+  
+  static propTypes = {
+    notifications: PropTypes.array.isRequired
+  };
+
   render() {
     const { notifications } = this.props;
 

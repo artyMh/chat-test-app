@@ -21,7 +21,7 @@
     "build:dev": "webpack --mode development",
     "start:dev": "webpack-dev-server --open --mode development",
     "start:prod": "webpack-dev-server --open --mode production",
-    "lint": "eslint ./src"
+    "lint": "eslint --ext js,jsx ./src"
   },
   "keywords": [],
   "license": "ISC",
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

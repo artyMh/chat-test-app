@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import connect from '../../decorators/connect';
 import { addNotification } from '../../redux/actions/main';
@@ -13,11 +14,16 @@ import ChatMessageForm from './chat-message-form';
     nickname: state.main.nickname
   }),
   actions: (dispatch) => ({
-    addNotification: (notification) => dispatch(addNotification(notification)),
-    clearNotifications: () => dispatch(clearNotifications())
+    addNotification: (notification) => dispatch(addNotification(notification))
   })
 })
 class Chat extends React.PureComponent {
+
+  static propTypes = {
+    history: PropTypes.array.isRequired,
+    nickname: PropTypes.string.isRequired,
+    addNotification: PropTypes.func.isRequired
+  };
 
   chatWebSocket = null;
 

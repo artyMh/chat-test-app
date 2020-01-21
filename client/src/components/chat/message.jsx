@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
-const ChatMessage = memo(function ChatMesage({ type = 'user', nickname = '', date, message, isYourself = false }) {
+const ChatMessage = ({ type = 'user', nickname = '', date, message, isYourself = false }) => {
   let badgeClass;
   let displayNickname;
 
@@ -21,6 +22,14 @@ const ChatMessage = memo(function ChatMesage({ type = 'user', nickname = '', dat
       </p>
     </div>
   );
-});
+};
 
-export default ChatMessage;
+ChatMessage.propTypes = {
+  type: PropTypes.oneOf(['chat', 'user']).isRequired,
+  nickname: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  isYourself: PropTypes.bool
+};
+
+export default memo(ChatMessage);

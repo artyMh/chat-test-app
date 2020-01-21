@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const NicknameForm = memo(function NicknameForm({ submitNickname }) {
+const NicknameForm = ({ submitNickname }) => {
   const [ nickname, setNickname ] = useState('');
 
   const submit = (e) => {
@@ -20,6 +20,10 @@ const NicknameForm = memo(function NicknameForm({ submitNickname }) {
       <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={nickname.length < 3}>Connect</button>
     </form>
   );
-});
+};
 
-export default NicknameForm;
+NicknameForm.propTypes = {
+  submitNickname: PropTypes.func.isRequired
+};
+
+export default memo(NicknameForm);

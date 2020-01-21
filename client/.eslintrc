@@ -18,10 +18,17 @@
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     "semi": ["error", "always"],
-    "no-unused-vars": ["warn", { "args": "none" }],
+    "quotes": ["error", "single"],
+    "no-unused-vars": ["error", { "args": "none" }],
     "no-console": "warn",
     "no-cond-assign": "off",
     "no-unreachable": "warn",
-    "no-extra-boolean-cast": "warn"
+    "no-extra-boolean-cast": "warn",
+    "react/prefer-stateless-function": [true, {}]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
