@@ -24,7 +24,7 @@
     "no-cond-assign": "off",
     "no-unreachable": "warn",
     "no-extra-boolean-cast": "warn",
-    "react/prefer-stateless-function": [true, {}]
+    "react/prefer-stateless-function": [1, {}]
   },
   "settings": {
     "react": {
