@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/configureStore';
 import routes from './routing/create-routes';
 
+import './localization/i18n';
+
 const store = configureStore();
 
 ReactDOM.render(

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import translate from '../../decorators/translate';
 import connect from '../../decorators/connect';
 import { addNotification } from '../../redux/actions/main';
 import Routes from '../../routing/routes';
@@ -9,6 +10,7 @@ import WsMessageCode from '../../types/websocket-messages-codes';
 import ChatMessage from './message';
 import ChatMessageForm from './chat-message-form';
 
+@translate()
 @connect({
   state: (state) => ({
     nickname: state.main.nickname
@@ -22,7 +24,8 @@ class Chat extends React.PureComponent {
   static propTypes = {
     history: PropTypes.object.isRequired,
     nickname: PropTypes.string.isRequired,
-    addNotification: PropTypes.func.isRequired
+    addNotification: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired
   };
 
   chatWebSocket = null;
@@ -33,12 +36,12 @@ class Chat extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { nickname, addNotification, history } = this.props;
+    const { nickname, addNotification, history, t } = this.props;
 
     if (!nickname) {
       addNotification({
         type: 'danger',
-        message: 'You din\'t entered your nickname.'
+        message: t('errors.emptyNickname')
       });
       history.push(Routes.HOME);
     } else {
@@ -89,7 +92,7 @@ class Chat extends React.PureComponent {
 
   _connectToWebSocket() {
     const { location: { protocol, hostname } } = window;
-    const { nickname, addNotification, history } = this.props;
+    const { nickname, addNotification, history, t } = this.props;
 
     this.chatWebSocket = new WebSocket(`${(protocol === 'https:' ? 'wss' : 'ws')}://${hostname}:3030`);
 
@@ -111,29 +114,29 @@ class Chat extends React.PureComponent {
       const { wasClean, code } = event;
 
       if (code === WsCloseCode.ABNORMAL_CLOSURE) {
-        addNotification({ type: 'danger', message: 'Server unavailable.' });
+        addNotification({ type: 'danger', message: t('errors.serverUnavailable') });
       } else if (wasClean) {
 
         switch (code) {
           case WsCloseCode.NORMAL_CLOSURE:
           case WsCloseCode.NO_STATUS_RECEIVED:
-            addNotification({ type: 'danger', message: 'Disconnected from the server.' });
+            addNotification({ type: 'danger', message: t('errors.disconnected') });
             break;
 
           case WsCloseCode.NICKNAME_ALREADY_RESERVED:
-            addNotification({ type: 'danger', message: 'Nickname already taken.' });
+            addNotification({ type: 'danger', message: t('errors.nicknameTaken') });
             break;
 
           case WsCloseCode.NICKNAME_SHOULD_BE_REGISTERED:
-            addNotification({ type: 'danger', message: 'You should register yourself with nickname before messaging.' });
+            addNotification({ type: 'danger', message: t('errors.needToRegister') });
             break;
 
           case WsCloseCode.USER_SILENT_TOO_LONG:
-            addNotification({ type: 'warning', message: 'You has been disconnected due to you were silent too long.' });
+            addNotification({ type: 'warning', message: t('errors.disconnectedDueInactive') });
             break;
 
           case WsCloseCode.SERVER_SHUTTING_DOWN:
-            addNotification({ type: 'danger', message: 'Server shutting down.' });
+            addNotification({ type: 'danger', message: t('errors.serverShuttingDown') });
             break;
 
           default:
@@ -164,15 +167,15 @@ class Chat extends React.PureComponent {
   }
 
   _renderChat() {
-    const { nickname } = this.props;
+    const { nickname, t } = this.props;
     const { messages } = this.state;
 
     return (
       <Fragment>
-        <h1 className="h3 mb-3 font-weight-normal mt-4">Connected as <span className="badge badge-dark">@{nickname}</span></h1>
-        <button type="button" className="btn btn-danger" onClick={this.disconnectWs}>Disconnect</button>
+        <h1 className="h3 mb-3 font-weight-normal mt-4">{t('chat.title')} <span className="badge badge-dark">@{nickname}</span></h1>
+        <button type="button" className="btn btn-danger" onClick={this.disconnectWs}>{t('chat.disconnectButton')}</button>
         <div className="my-3 p-3 bg-white rounded shadow-sm">
-          <h6 className="border-bottom border-gray pb-2 mb-0">Recent messages</h6>
+          <h6 className="border-bottom border-gray pb-2 mb-0">{t('chat.messagesTitle')}</h6>
           {messages.map((msg, index) => 
             <ChatMessage
               key={index}

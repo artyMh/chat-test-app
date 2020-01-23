@@ -1,0 +1,34 @@
+{
+  "header": {
+    "title": "Tiešraides čatbots"
+  },
+  "footer": {
+    "copyright": "Izveidojis <0>Artjoms Mihailovs</0> © {{date}}"
+  },
+  "auth": {
+    "title": "Ievadiet savu segvārdu",
+    "form": {
+      "buttonText": "Pieslēgties",
+      "inputPlaceholder": "Vārds"
+    }
+  },
+  "chat": {
+    "title": "Savienots kā",
+    "disconnectButton": "Atvienot",
+    "messagesTitle": "Pedejie ziņojumi",
+    "form": {
+      "inputName": "Ziņa",
+      "buttonText": "Sūtīt"
+    }
+  },
+  "errors": {
+    "mainApp": "Kaut kas nav kartībā!",
+    "emptyNickname": "Jūs neesat ievadījis savu vārdu.",
+    "serverUnavailable": "Serveris nav pieejams.",
+    "disconnected": "Atvienots no servera.",
+    "nicknameTaken": "Vārds jau aizņemts.",
+    "needToRegister": "Pirms ziņapmaiņas jums jāreģistrējas ar izvēlēto vārdu.",
+    "disconnectedDueInactive": "Jūs esat atvienots pārāk ilgi bezdarbības dēļ.",
+    "serverShuttingDown": "Serveris tiek izslēgts."
+  }
+}

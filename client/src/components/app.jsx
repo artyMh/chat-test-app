@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import translate from '../decorators/translate';
 import connect from '../decorators/connect';
 import { setInitialState } from '../redux/actions/main';
 import Header from './header';
@@ -14,10 +15,13 @@ import Footer from './footer';
     setInitialState: (newState) => dispatch(setInitialState(newState))
   })
 })
+@translate()
 class App extends React.PureComponent {
 
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    t: PropTypes.func.isRequired,
+    i18n: PropTypes.object.isRequired
   };
 
   state = {
@@ -29,11 +33,12 @@ class App extends React.PureComponent {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('Error application!', error, errorInfo);
+    // eslint-disable-next-line no-console
+    console.error('Error in application!', error, errorInfo);
   }
 
   render() {
-    const { children } = this.props;
+    const { children, t } = this.props;
     const { hasError } = this.state;
 
     return (
@@ -41,7 +46,7 @@ class App extends React.PureComponent {
         <Header />
         <main role="main" className="container">
           {hasError ? (
-            <h1 className="h3 mb-3 font-weight-normal text-center mt-4">Something went wrong!</h1>
+            <h1 className="h3 mb-3 font-weight-normal text-center mt-4">{t('errors.mainApp')}</h1>
           ) : (
             <>
               <Notifications />
