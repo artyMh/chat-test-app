@@ -199,7 +199,7 @@ class Chat extends React.PureComponent {
 
     return (
       <div className="row justify-content-sm-center">
-        <div className="col-sm-12 col-md-6 text-center mt-3 mb-3">
+        <div className="col-sm-12 col-md-9 text-center mt-3 mb-3">
           {wsOpened ? this._renderChat() : this._renderLoader()}
         </div>
       </div>

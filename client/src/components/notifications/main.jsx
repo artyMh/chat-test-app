@@ -20,7 +20,7 @@ class Notifications extends React.PureComponent {
     return (
       <section id="notifications">
         <div className="row justify-content-md-center">
-          <div className="col-md-4">
+          <div className="col-md-6">
             {notifications.map((notification, index) => 
               <Notification 
                 key={index}

@@ -5,7 +5,7 @@ import translation from '../decorators/translate';
 
 const Footer = ({ t }) => (
   <footer className="row justify-content-md-center bg-dark">
-    <div className="col-md-4">
+    <div className="col-md-6">
       <p className="text-center text-white mt-3">
         <Trans
           defaults="footer.copyright"

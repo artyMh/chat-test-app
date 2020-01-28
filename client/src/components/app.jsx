@@ -44,7 +44,7 @@ class App extends React.PureComponent {
     return (
       <>
         <Header />
-        <main role="main" className="container">
+        <main role="main" className="container mt-2 mb-5">
           {hasError ? (
             <h1 className="h3 mb-3 font-weight-normal text-center mt-4">{t('errors.mainApp')}</h1>
           ) : (
