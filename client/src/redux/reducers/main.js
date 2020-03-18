@@ -7,6 +7,12 @@ export const initialState = {
     // { type: 'danger', message: 'Server unavailable.' },
     // { type: 'warning', message: 'Disconnected by the server due to inactivity' },
   ],
+  chatWS: {
+    connectionState: '',
+    chatMessages: [
+      // { type, nickname, message, timestamp }
+    ],
+  }
 };
 
 export default function reducer(inputState = initialState, action) {

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import translate from '../../decorators/translate';
@@ -171,7 +171,7 @@ class Chat extends React.PureComponent {
     const { messages } = this.state;
 
     return (
-      <Fragment>
+      <>
         <h1 className="h3 mb-3 font-weight-normal mt-4">{t('chat.title')} <span className="badge badge-dark">@{nickname}</span></h1>
         <button type="button" className="btn btn-danger" onClick={this.disconnectWs}>{t('chat.disconnectButton')}</button>
         <div className="my-3 p-3 bg-white rounded shadow-sm">
@@ -190,7 +190,7 @@ class Chat extends React.PureComponent {
         <div className="my-3 p-3 bg-white rounded shadow-sm">
           <ChatMessageForm submitMessage={this.submitMessage}/>
         </div>
-      </Fragment>
+      </>
     );
   }
 

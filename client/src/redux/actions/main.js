@@ -8,7 +8,7 @@ import * as Actions from '../constants';
 export function setInitialState(state) {
   return {
     type: Actions.SET_INITIAL_STATE,
-    payload: state,
+    payload: state
   };
 }
 
@@ -24,6 +24,7 @@ export function clearStoreData() {
 
 /**
  * Action for setting user desired nickname
+ * @param {string} nickname user nickname
  * @return {Object} declared action
  */
 export function setNickname(nickname) {
@@ -51,5 +52,37 @@ export function addNotification(notification) {
 export function clearNotifications() {
   return {
     type: Actions.CLEAR_NOTIFICATIONS
+  };
+}
+
+/**
+ * Action for setting up chat web socket connection
+ * @return {Object} declared action
+ */
+export function connectToChatWebSocket() {
+  return {
+    type: Actions.WS_CONNECT
+  };
+}
+
+/**
+ * Action for disconnecting from chat web socket connection
+ * @return {Object} declared action
+ */
+export function disconnectFromChatWebSocket() {
+  return {
+    type: Actions.WS_DISCONNECT
+  };
+}
+
+/**
+ * Action for adding chat message to messages
+ * @param {Object} chatMessage chat message
+ * @return {Object} declared action
+ */
+export function addChatMessage(chatMessage) {
+  return {
+    type: Actions.ADD_CHAT_MESSAGE,
+    payload: chatMessage
   };
 }
