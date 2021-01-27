@@ -31,17 +31,16 @@ class ChatWebSocket {
   }
 
   send(data) {
+    console.log('WS sending', data)
     // check for valid data!
     this._ws.send(JSON.stringify(data));
   }
 
   registerUser() {
-    const data = {
+    this.send({
       code: WsMessageCode.REGISTER_USER,
-      data: { nickname }
-    };
-    console.log('sending register request', data);
-    this.send(JSON.stringify(data));
+      data: { nickname: this.nickname }
+    });
   }
 
   _setUpEventsHandlers() {
@@ -52,4 +51,4 @@ class ChatWebSocket {
   }
 };
 
-export default new ChatWebSocket;
+export default ChatWebSocket;

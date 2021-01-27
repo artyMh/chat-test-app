@@ -9,7 +9,7 @@ export default class UsersStore {
     this.users = this.users.filter((value) => value !== username);
   }
 
-  public userExist(username: string): boolean {
+  public isUserExist(username: string): boolean {
     return this.users.includes(username);
   }
 }

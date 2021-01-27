@@ -19,7 +19,6 @@ const Header = ({ i18n, t }) => {
         <button type="button" className={`btn btn-${language !== 'lv' ? 'outline-' : ''}light mr-3`} onClick={() => changeLanguage('lv')}>LV</button>
         <button type="button" className={`btn btn-${language !== 'ru' ? 'outline-' : ''}light`} onClick={() => changeLanguage('ru')}>RU</button>
       </div>
-      
     </nav>
   );
 };

@@ -76,13 +76,35 @@ export function disconnectFromChatWebSocket() {
 }
 
 /**
- * Action for adding chat message to messages
- * @param {Object} chatMessage chat message
+ * Action for setting web socket connection status to connected
  * @return {Object} declared action
  */
-export function addChatMessage(chatMessage) {
+export function webSocketConnected() {
   return {
-    type: Actions.ADD_CHAT_MESSAGE,
-    payload: chatMessage
+    type: Actions.WS_CONNECT_SUCCESS
+  };
+}
+
+/**
+ * Action for sending message to websocket
+ * @param {Object} message chat message
+ * @return {Object} declared action
+ */
+export function sendMessageToChatWebSocket(message) {
+  return {
+    type: Actions.WS_SEND_MESSAGE,
+    payload: message
+  };
+}
+
+/**
+ * Action for receive message from socket
+ * @param {Object} message chat message
+ * @return {Object} declared action
+ */
+export function receivedMessageToChatWebSocket(message) {
+  return {
+    type: Actions.WS_RECEIVE_MESSAGE,
+    payload: message
   };
 }

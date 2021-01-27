@@ -2,20 +2,15 @@ import * as Actions from '../constants';
 
 export const initialState = {
   nickname: '',
-  notifications: [
-    // { type: 'danger', message: 'Failed to connect. Nickname already taken.' },
-    // { type: 'danger', message: 'Server unavailable.' },
-    // { type: 'warning', message: 'Disconnected by the server due to inactivity' },
-  ],
-  chatWS: {
+  notifications: [],
+  chatWebSocket: {
     connectionState: '',
-    chatMessages: [
-      // { type, nickname, message, timestamp }
-    ],
+    chatMessages: [],
   }
 };
 
 export default function reducer(inputState = initialState, action) {
+  console.log('Reducer:', action)
   switch (action.type) {
     
     case Actions.SET_INITIAL_STATE:
@@ -31,7 +26,36 @@ export default function reducer(inputState = initialState, action) {
       return { ...inputState, notifications: [...inputState.notifications, action.payload] };
 
     case Actions.CLEAR_NOTIFICATIONS:
-        return { ...inputState, notifications: [] };
+      return { ...inputState, notifications: [] };
+
+    case Actions.WS_CONNECT_SUCCESS:
+      return {
+        ...inputState,
+        chatWebSocket: {
+          connectionState: 'CONNECTED',
+          chatMessages: [
+            { type: 'chat', timestamp: Date.now(), message: 'Write something!'}
+          ]
+        }
+      }
+
+    case Actions.WS_SEND_MESSAGE:
+        return {
+          ...inputState,
+          chatWebSocket: {
+            ...inputState.chatWebSocket,
+            chatMessages: [...inputState.chatWebSocket.chatMessages, action.payload]
+          }
+        }
+
+      case Actions.WS_RECEIVE_MESSAGE:
+          return {
+            ...inputState,
+            chatWebSocket: {
+              ...inputState.chatWebSocket,
+              chatMessages: [...inputState.chatWebSocket.chatMessages, action.payload]
+            }
+          }
 
     default:
       return inputState;

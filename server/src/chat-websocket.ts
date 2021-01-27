@@ -58,7 +58,7 @@ export class ChatWebSocket {
       const { data: { nickname } } = msg;
 
       // If username already taken - close connection
-      if (this.usersStore.userExist(nickname)) {
+      if (this.usersStore.isUserExist(nickname)) {
         console.log(`User with '${nickname}' nickname already exists, disconnecting client ...`);
         ws.close(WsCloseCodes.NICKNAME_ALREADY_RESERVED, "");
       } else {

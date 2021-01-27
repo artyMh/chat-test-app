@@ -1,8 +1,9 @@
 import i18next from 'i18next';
 import { WS_CONNECT, WS_DISCONNECT, WS_SEND_MESSAGE } from '../constants';
-import { addNotification, addChatMessage } from '../actions/main';
+import { addNotification, sendMessageToChatWebSocket, webSocketConnected, receivedMessageToChatWebSocket } from '../actions/main';
 import ChatWebSocket from '../../services/chat-web-socket';
 import WsCloseCode from '../../types/websocket-close-codes';
+
 const { location: { protocol, hostname } } = window;
 const url = `${(protocol === 'https:' ? 'wss' : 'ws')}://${hostname}:3030`;
 
@@ -10,19 +11,20 @@ let chatWs = null;
 
 const wsOnError = (dispatch) => {
   return (event) => {
-    dispatch(addNotification({ type: 'asd', message: 'asdasd' }));
+    dispatch(addNotification({ type: 'danger', message: 'websocket error' }));
   };
 };
 
 const onMessage = (dispatch) => {
   return (event) => {
-    dispatch(addChatMessage({ type: '', nickname: '', message: '', timestamp: 123123123123 }));
+    console.log('WS message:', event)
+    const parsed = JSON.parse(event.data)
+    dispatch(receivedMessageToChatWebSocket(parsed.data));
   };
 };
 
 const onClose = (dispatch) => {
   return (event) => {
-    console.log('SOCKET CLOSED!', event);
       const { wasClean, code } = event;
 
       if (code === WsCloseCode.ABNORMAL_CLOSURE) {
@@ -32,11 +34,11 @@ const onClose = (dispatch) => {
         switch (code) {
           case WsCloseCode.NORMAL_CLOSURE:
           case WsCloseCode.NO_STATUS_RECEIVED:
-            dispatch(addNotification({ type: 'danger', message: i18next.t('errors.disconnected') }));
+            dispatch(addNotification({ type: 'info', message: i18next.t('errors.disconnected') }));
             break;
 
           case WsCloseCode.NICKNAME_ALREADY_RESERVED:
-            dispatch(addNotification({ type: 'danger', message: i18next.t('errors.nicknameTaken') }));
+            dispatch(addNotification({ type: 'warning', message: i18next.t('errors.nicknameTaken') }));
             break;
 
           case WsCloseCode.NICKNAME_SHOULD_BE_REGISTERED:
@@ -44,7 +46,7 @@ const onClose = (dispatch) => {
             break;
 
           case WsCloseCode.USER_SILENT_TOO_LONG:
-            dispatch(addNotification({ type: 'warning', message: i18next.t('errors.disconnectedDueInactive') }));
+            dispatch(addNotification({ type: 'info', message: i18next.t('errors.disconnectedDueInactive') }));
             break;
 
           case WsCloseCode.SERVER_SHUTTING_DOWN:
@@ -60,17 +62,18 @@ const onClose = (dispatch) => {
 
 const onOpen = (dispatch) => {
   return (event) => {
-    console.log('SOCKET OPENED, Trying to register');
+    dispatch(webSocketConnected());
     chatWs.registerUser();
   };
 };
 
 const chatWebSocketMiddleware = ({ dispatch, getState }) => next => action => {
-  console.log('Middleware triggered:', dispatch, action);
-  const { nickname } = getState();
+  console.log('Middleware:', action);
+  const { main: { nickname } } = getState();
 
   switch (action.type) {
     case WS_CONNECT: {
+      // web socket 'connecting' state here to dispatch?
       chatWs = new ChatWebSocket(url, nickname, {
         onerror: wsOnError(dispatch),
         onmessage: onMessage(dispatch),
@@ -83,6 +86,12 @@ const chatWebSocketMiddleware = ({ dispatch, getState }) => next => action => {
 
     case WS_SEND_MESSAGE: {
       chatWs.send(action.payload);
+      action.payload = {
+        message: action.payload.data.message,
+        type: 'user',
+        nickname,
+        timestamp: Date.now()
+      };
       break;
     }
 
