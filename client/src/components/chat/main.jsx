@@ -5,7 +5,6 @@ import translate from '../../decorators/translate';
 import connect from '../../decorators/connect';
 import { addNotification, connectToChatWebSocket, disconnectFromChatWebSocket, sendMessageToChatWebSocket } from '../../redux/actions/main';
 import Routes from '../../routing/routes';
-import WsCloseCode from '../../types/websocket-close-codes';
 import WsMessageCode from '../../types/websocket-messages-codes';
 import ChatMessage from './message';
 import ChatMessageForm from './chat-message-form';
@@ -34,7 +33,7 @@ class Chat extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { nickname, addNotification, history, t } = this.props;
+    const { nickname, addNotification, history, t, chatWebSocket: { connectionState } } = this.props
 
     if (!nickname) {
       addNotification({
@@ -42,8 +41,25 @@ class Chat extends React.PureComponent {
         message: t('errors.emptyNickname')
       });
       history.push(Routes.HOME);
-    } else {
-      this.props.connectToChatWebSocket()
+    }
+    else if (connectionState !== 'CONNECTED') {
+      addNotification({
+        type: 'danger',
+        message: t('errors.notConnected')
+      });
+      history.push(Routes.HOME)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { addNotification, history, t, chatWebSocket: { connectionState } } = this.props
+
+    if (prevProps.chatWebSocket.connectionState === 'CONNECTED' && connectionState !== 'CONNECTED') {
+      addNotification({
+        type: 'danger',
+        message: t('errors.disconnected')
+      });
+      history.push(Routes.HOME)
     }
   }
 
@@ -54,7 +70,7 @@ class Chat extends React.PureComponent {
   }
 
   submitMessage = (message) => {
-    const { nickname, sendMessageToChatWebSocket } = this.props;
+    const { nickname, sendMessageToChatWebSocket } = this.props
 
     const msg = {
       code: WsMessageCode.CHAT_MESSAGE,
@@ -66,11 +82,11 @@ class Chat extends React.PureComponent {
 
   disconnectWs = () => {
     this.props.disconnectFromChatWebSocket()
-    this.props.history.push(Routes.HOME);
+    this.props.history.push(Routes.HOME)
   }
 
   _renderChat() {
-    const { nickname, t, chatWebSocket: { chatMessages } } = this.props;
+    const { nickname, t, chatWebSocket: { chatMessages } } = this.props
 
     return (
       <>
@@ -98,7 +114,7 @@ class Chat extends React.PureComponent {
 
   render() {
     const { chatWebSocket: { connectionState } } = this.props
-    
+
     return (
       <div className="row justify-content-sm-center">
         <div className="col-sm-12 col-md-9 text-center mt-3 mb-3">

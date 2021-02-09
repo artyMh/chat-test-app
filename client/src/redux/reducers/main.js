@@ -28,6 +28,30 @@ export default function reducer(inputState = initialState, action) {
     case Actions.CLEAR_NOTIFICATIONS:
       return { ...inputState, notifications: [] };
 
+    case Actions.WS_CONNECT:
+      return {
+        ...inputState,
+        chatWebSocket: {
+          connectionState: 'CONNECTING'
+        }
+      }
+
+    case Actions.WS_DISCONNECT:
+      return {
+        ...inputState,
+        chatWebSocket: {
+          connectionState: ''
+        }
+      }
+
+    case Actions.WS_DISCONNECTED:
+      return {
+        ...inputState,
+        chatWebSocket: {
+          connectionState: ''
+        }
+      }
+
     case Actions.WS_CONNECT_SUCCESS:
       return {
         ...inputState,

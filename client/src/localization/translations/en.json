@@ -29,6 +29,7 @@
     "nicknameTaken": "Nickname already taken.",
     "needToRegister": "You should register yourself with nickname before messaging.",
     "disconnectedDueInactive": "You has been disconnected due to you were silent too long.",
-    "serverShuttingDown": "Server shutting down."
+    "serverShuttingDown": "Server shutting down.",
+    "notConnected": "You are not connected to chat."
   }
 }

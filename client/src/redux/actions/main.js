@@ -86,6 +86,16 @@ export function webSocketConnected() {
 }
 
 /**
+ * Action for setting web socket connection status to disconnected
+ * @return {Object} declared action
+ */
+export function webSocketDisconnected() {
+  return {
+    type: Actions.WS_DISCONNECTED
+  };
+}
+
+/**
  * Action for sending message to websocket
  * @param {Object} message chat message
  * @return {Object} declared action

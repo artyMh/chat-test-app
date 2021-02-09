@@ -29,6 +29,7 @@
     "nicknameTaken": "Vārds jau aizņemts.",
     "needToRegister": "Pirms ziņapmaiņas jums jāreģistrējas ar izvēlēto vārdu.",
     "disconnectedDueInactive": "Jūs esat atvienots pārāk ilgi bezdarbības dēļ.",
-    "serverShuttingDown": "Serveris tiek izslēgts."
+    "serverShuttingDown": "Serveris tiek izslēgts.",
+    "notConnected": "Jūs neesat pieslēgušies pie čata."
   }
 }

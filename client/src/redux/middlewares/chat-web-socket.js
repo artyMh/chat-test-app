@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 import { WS_CONNECT, WS_DISCONNECT, WS_SEND_MESSAGE } from '../constants';
-import { addNotification, sendMessageToChatWebSocket, webSocketConnected, receivedMessageToChatWebSocket } from '../actions/main';
+import { addNotification, webSocketConnected, receivedMessageToChatWebSocket, webSocketDisconnected } from '../actions/main';
 import ChatWebSocket from '../../services/chat-web-socket';
 import WsCloseCode from '../../types/websocket-close-codes';
 
@@ -26,6 +26,7 @@ const onMessage = (dispatch) => {
 const onClose = (dispatch) => {
   return (event) => {
       const { wasClean, code } = event;
+      dispatch(webSocketDisconnected());
 
       if (code === WsCloseCode.ABNORMAL_CLOSURE) {
         dispatch(addNotification({ type: 'danger', message: i18next.t('errors.serverUnavailable') }));
@@ -61,19 +62,18 @@ const onClose = (dispatch) => {
 };
 
 const onOpen = (dispatch) => {
-  return (event) => {
-    dispatch(webSocketConnected());
-    chatWs.registerUser();
+  return () => {
+    dispatch(webSocketConnected())
+    chatWs.registerUser()
   };
 };
 
 const chatWebSocketMiddleware = ({ dispatch, getState }) => next => action => {
-  console.log('Middleware:', action);
-  const { main: { nickname } } = getState();
+  console.log('Middleware:', action)
+  const { main: { nickname } } = getState()
 
   switch (action.type) {
     case WS_CONNECT: {
-      // web socket 'connecting' state here to dispatch?
       chatWs = new ChatWebSocket(url, nickname, {
         onerror: wsOnError(dispatch),
         onmessage: onMessage(dispatch),
@@ -81,7 +81,7 @@ const chatWebSocketMiddleware = ({ dispatch, getState }) => next => action => {
         onopen: onOpen(dispatch)
       });
       chatWs.connect();
-      break;
+      break
     }
 
     case WS_SEND_MESSAGE: {
@@ -92,16 +92,16 @@ const chatWebSocketMiddleware = ({ dispatch, getState }) => next => action => {
         nickname,
         timestamp: Date.now()
       };
-      break;
+      break
     }
 
     case WS_DISCONNECT: {
-      chatWs.close();
-      break;
+      chatWs.close()
+      break
     }
   }
 
-  next(action);
+  next(action)
 };
 
-export default chatWebSocketMiddleware;
+export default chatWebSocketMiddleware

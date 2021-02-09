@@ -29,7 +29,8 @@
     "nicknameTaken": "Имя уже занято.",
     "needToRegister": "Вы должны зарегистрироваться с именем перед отправкой сообщений.",
     "disconnectedDueInactive": "Вы были отключены от сервера из за долгого бездествия.",
-    "serverShuttingDown": "Сервер выключается."
+    "serverShuttingDown": "Сервер выключается.",
+    "notConnected": "Вы не подключны к чату."
   }
 }
 
