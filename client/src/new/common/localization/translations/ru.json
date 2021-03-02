@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "Онлайн чат"
+  },
+  "footer": {
+    "copyright": "Сделал <0>Artjoms Mihailovs</0> © {{date}}"
+  },
+  "auth": {
+    "title": "Введите ваш псевдоним",
+    "form": {
+      "buttonText": "Присоединиться",
+      "inputPlaceholder": "Имя"
+    }
+  },
+  "chat": {
+    "title": "Подключен как",
+    "disconnectButton": "Отключиться",
+    "messagesTitle": "Последние сообщения",
+    "form": {
+      "inputName": "Сообщение",
+      "buttonText": "Отправить"
+    }
+  },
+  "errors": {
+    "mainApp": "Что-то пошло не так!",
+    "emptyNickname": "Вы не ввели имя.",
+    "serverUnavailable": "Сервер недоступен.",
+    "disconnected": "Отключён от спервера.",
+    "nicknameTaken": "Имя уже занято.",
+    "needToRegister": "Вы должны зарегистрироваться с именем перед отправкой сообщений.",
+    "disconnectedDueInactive": "Вы были отключены от сервера из за долгого бездествия.",
+    "serverShuttingDown": "Сервер выключается.",
+    "notConnected": "Вы не подключны к чату."
+  }
+}
+

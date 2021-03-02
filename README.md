@@ -17,12 +17,14 @@ Everything made from scratch, without any help of starter packs or else (no `cre
 * ~~Add i18n module support~~
 * ~~Add basic error boundary~~
 * ~~Websocket handling logic to redux middleware~~
-* Rework file naming/component structure
+* Rework project structure
 * Get rid off decorators
+* Localization translates to assets?
 * Rewrite frontend on TypeScript
 * Get rid off `prop-types`
-* Use bootstrap or antd react package
+* Add path guards by HOCs?
 * Update packages and node
+* Use bootstrap or antd or fluentui
 * Add unit tests
 * Transfer all chat logic to server(fe sending/receiving partial data, same to be)
 * Add server handling exceptions and closing conneciton gracefully

@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore from './redux/configure-store';
-import routes from './routing/create-routes';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import { Provider } from 'react-redux';
+// import configureStore from './redux/configure-store';
+// import routes from './routing/create-routes';
 
-import './localization/i18n';
+// import './localization/i18n';
 
-const store = configureStore();
+// const store = configureStore();
 
-ReactDOM.render(
-  <Provider store={store}>
-    {routes}
-  </Provider>,
-  document.getElementById('test-app')
-);
+// ReactDOM.render(
+//   <Provider store={store}>
+//     {routes}
+//   </Provider>,
+//   document.getElementById('test-app')
+// );
+import './new'

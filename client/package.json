@@ -4,11 +4,11 @@
   "description": "Client for test excersise",
   "private": true,
   "author": "Artjoms Mihailovs <art.mihailovs@gmail.com>",
-  "homepage": "https://github.com/artyMh/ubnt-test-excersise#readme",
+  "homepage": "https://github.com/artyMh/chat-test-app#readme",
   "email": "art.mihailovs@gmail.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/artyMh/ubnt-test-excersise.git"
+    "url": "https://github.com/artyMh/chat-test-app.git"
   },
   "engines": {
     "node": ">=10.16.0",
