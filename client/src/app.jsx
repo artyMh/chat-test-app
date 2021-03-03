@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import translate from '../decorators/translate';
-import connect from '../decorators/connect';
-import { setInitialState } from '../redux/actions/main';
+import translate from './common/decorators/translate';
+import connect from './common/decorators/connect';
+import { setInitialState } from './common/store/actions/main';
 import Header from './common/components/header';
 import Footer from './common/components/footer';
 import Notifications from './common/components/notifications';

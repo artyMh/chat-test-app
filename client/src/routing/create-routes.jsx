@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Routes from './routes';
-import App from '../components/app';
-import Auth from '../components/auth/main';
-import Chat from '../components/chat/main';
+import App from '../app';
+import Auth from '../pages/auth/main';
+import Chat from '../pages/chat/main';
 
 const routes = (
   <BrowserRouter>

@@ -17,10 +17,11 @@ Everything made from scratch, without any help of starter packs or else (no `cre
 * ~~Add i18n module support~~
 * ~~Add basic error boundary~~
 * ~~Websocket handling logic to redux middleware~~
-* Rework project structure
+* ~~Rework project structure~~
 * Get rid off decorators
 * Localization translates to assets?
-* Rewrite frontend on TypeScript
+* Notification list component to modules or other folder structure?
+* Rewrite frontend on TypeScript(and use `eslint`)
 * Get rid off `prop-types`
 * Add path guards by HOCs?
 * Update packages and node
