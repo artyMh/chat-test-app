@@ -18,9 +18,10 @@ Everything made from scratch, without any help of starter packs or else (no `cre
 * ~~Add basic error boundary~~
 * ~~Websocket handling logic to redux middleware~~
 * ~~Rework project structure~~
+* ~~Introduce features/modules folder(notifications list, chat window)~~
+* ~~Rework pages~~
 * Get rid off decorators
 * Localization translates to assets?
-* Notification list component to modules or other folder structure?
 * Rewrite frontend on TypeScript(and use `eslint`)
 * Get rid off `prop-types`
 * Add path guards by HOCs?

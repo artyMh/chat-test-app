@@ -18,7 +18,7 @@ import NicknameForm from './nickname-form';
     connectToChatWebSocket: () => dispatch(connectToChatWebSocket()),
   })
 })
-class Auth extends React.PureComponent {
+class AuthPage extends React.PureComponent {
 
   static propTypes = {
     history: PropTypes.object.isRequired,
@@ -66,4 +66,4 @@ class Auth extends React.PureComponent {
   }
 }
 
-export default Auth;
+export default AuthPage;

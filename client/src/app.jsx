@@ -5,7 +5,7 @@ import connect from './common/decorators/connect';
 import { setInitialState } from './common/store/actions/main';
 import Header from './common/components/header';
 import Footer from './common/components/footer';
-import Notifications from './common/components/notifications';
+import NotificationsList from './features/notifications-list';
 
 @connect({
   state: (state) => ({
@@ -51,7 +51,7 @@ class App extends React.PureComponent {
             <h1 className="h3 mb-3 font-weight-normal text-center mt-4">{t('errors.mainApp')}</h1>
           ) : (
             <>
-              <Notifications notifications={notifications}/>
+              <NotificationsList notifications={notifications}/>
               {children}
             </>
           )}

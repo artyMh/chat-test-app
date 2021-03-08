@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Notification from '../notification';
+import Notification from './components/notification';
 
-const Notifications = ({ notifications = [] }) => (
+const NotificationsList = ({ notifications = [] }) => (
     <section id="notifications">
       <div className="row justify-content-md-center">
         <div className="col-md-6">
@@ -18,8 +18,8 @@ const Notifications = ({ notifications = [] }) => (
     </section>
 );
 
-Notifications.propTypes = {
+NotificationsList.propTypes = {
   notifications: PropTypes.array.isRequired
 };
 
-export default memo(Notifications);
+export default memo(NotificationsList);

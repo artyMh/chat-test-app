@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import translate from '../../common/decorators/translate';
+import translate from '../../../common/decorators/translate';
 
 const ChatMessageForm = ({ submitMessage, t }) => {
   const [ message, setMessage ] = useState('');
