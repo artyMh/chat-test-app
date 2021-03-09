@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import translate from '../../common/decorators/translate';
+import { useTranslation } from 'react-i18next';
 
-const NicknameForm = ({ submitNickname, t }) => {
+const NicknameForm = ({ submitNickname }) => {
   const [ nickname, setNickname ] = useState('');
+  const { t } = useTranslation();
 
   const submit = (e) => {
     e.preventDefault();
@@ -32,8 +33,7 @@ const NicknameForm = ({ submitNickname, t }) => {
 };
 
 NicknameForm.propTypes = {
-  submitNickname: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  submitNickname: PropTypes.func.isRequired
 };
 
-export default translate()(NicknameForm);
+export default NicknameForm;

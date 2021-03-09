@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import moment from 'moment';
-import translate from '../../common/decorators/translate';
 import ChatMessage from './components/chat-message';
 import ChatMessageForm from './components/chat-message-form';
 
-const Chat = ({ userNickname, chatMessages, submitMessage, disconnectFromChat, t }) => {
+const Chat = ({ userNickname, chatMessages, submitMessage, disconnectFromChat }) => {
+    const { t } = useTranslation();
     return (
       <>
         <h1 className="h3 mb-3 font-weight-normal mt-4">{t('chat.title')} <span className="badge badge-dark">@{userNickname}</span></h1>
@@ -34,8 +35,7 @@ Chat.propTypes = {
   userNickname: PropTypes.string.isRequired,
   chatMessages: PropTypes.array.isRequired,
   submitMessage: PropTypes.func.isRequired,
-  disconnectFromChat: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  disconnectFromChat: PropTypes.func.isRequired
 }
 
-export default translate()(memo(Chat))
+export default memo(Chat);

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Trans } from 'react-i18next';
-import PropTypes from 'prop-types';
-import translation from '../../decorators/translate';
 
-const Footer = ({ t }) => (
+const Footer = () => (
   <footer className="row justify-content-md-center bg-dark">
     <div className="col-md-6">
       <p className="text-center text-white mt-3">
@@ -17,8 +15,4 @@ const Footer = ({ t }) => (
   </footer>
 );
 
-Footer.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default translation()(Footer);
+export default Footer;

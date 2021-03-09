@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import translate from '../../../common/decorators/translate';
+import { useTranslation } from 'react-i18next';
 
-const ChatMessageForm = ({ submitMessage, t }) => {
+const ChatMessageForm = ({ submitMessage }) => {
   const [ message, setMessage ] = useState('');
+  const { t } = useTranslation();
 
   const submit = (e) => {
     e.preventDefault();
@@ -32,7 +33,6 @@ const ChatMessageForm = ({ submitMessage, t }) => {
 
 ChatMessageForm.propTypes = {
   submitMessage: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
 };
 
-export default translate()(ChatMessageForm);
+export default ChatMessageForm;

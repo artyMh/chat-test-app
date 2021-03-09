@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import translate from './common/decorators/translate';
+import { withTranslation } from 'react-i18next';
 import connect from './common/decorators/connect';
 import { setInitialState } from './common/store/actions/main';
 import Header from './common/components/header';
@@ -16,7 +16,6 @@ import NotificationsList from './features/notifications-list';
     setInitialState: (newState) => dispatch(setInitialState(newState))
   })
 })
-@translate()
 class App extends React.PureComponent {
 
   static propTypes = {
@@ -62,4 +61,4 @@ class App extends React.PureComponent {
   }
 }
 
-export default App;
+export default withTranslation()(App);

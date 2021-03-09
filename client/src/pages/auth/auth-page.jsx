@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import translate from '../../common/decorators/translate';
+import { withTranslation } from 'react-i18next';
 import connect from '../../common/decorators/connect';
 import { setNickname, clearNotifications, connectToChatWebSocket } from '../../common/store/actions/main';
 import Routes from '../../routing/routes';
 import NicknameForm from './nickname-form';
 
-@translate()
+
 @connect({
   state: (state) => ({
     nickname: state.main.nickname,
@@ -66,4 +66,4 @@ class AuthPage extends React.PureComponent {
   }
 }
 
-export default AuthPage;
+export default withTranslation()(AuthPage);

@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import translate from '../../common/decorators/translate';
+import { withTranslation } from 'react-i18next';
 import connect from '../../common/decorators/connect';
 import { addNotification, connectToChatWebSocket, disconnectFromChatWebSocket, sendMessageToChatWebSocket } from '../../common/store/actions/main';
 import Routes from '../../routing/routes';
 import WsMessageCode from '../../common/models/websocket-messages-codes';
-
 import Chat from '../../features/chat'
 
-@translate()
 @connect({
   state: (state) => ({
     nickname: state.main.nickname,
@@ -105,4 +103,4 @@ class ChatPage extends React.PureComponent {
   }
 }
 
-export default ChatPage;
+export default withTranslation()(ChatPage);

@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import translation from '../../decorators/translate';
+import { useTranslation } from 'react-i18next';
 
-const Header = ({ i18n, t }) => {
+const Header = () => {
+  const { t, i18n } = useTranslation();
   const { language } = i18n;
 
   const changeLanguage = (lng) => {
@@ -23,9 +23,4 @@ const Header = ({ i18n, t }) => {
   );
 };
 
-Header.propTypes = {
-  i18n: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
-};
-
-export default translation()(Header);
+export default Header;
