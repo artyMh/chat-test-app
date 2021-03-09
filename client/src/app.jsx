@@ -1,21 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import connect from './common/decorators/connect';
 import { setInitialState } from './common/store/actions/main';
 import Header from './common/components/header';
 import Footer from './common/components/footer';
 import NotificationsList from './features/notifications-list';
 
-@connect({
-  state: (state) => ({
-    nickname: state.main.nickname,
-    notifications: state.main.notifications
-  }),
-  actions: (dispatch) => ({
-    setInitialState: (newState) => dispatch(setInitialState(newState))
-  })
-})
 class App extends React.PureComponent {
 
   static propTypes = {
@@ -61,4 +52,15 @@ class App extends React.PureComponent {
   }
 }
 
-export default withTranslation()(App);
+const mapStateToProps = (state) => ({
+  nickname: state.main.nickname,
+  notifications: state.main.notifications
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setInitialState: (newState) => dispatch(setInitialState(newState))
+});
+
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(App)
+);

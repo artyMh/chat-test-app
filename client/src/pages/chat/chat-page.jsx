@@ -1,24 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import connect from '../../common/decorators/connect';
 import { addNotification, connectToChatWebSocket, disconnectFromChatWebSocket, sendMessageToChatWebSocket } from '../../common/store/actions/main';
 import Routes from '../../routing/routes';
 import WsMessageCode from '../../common/models/websocket-messages-codes';
 import Chat from '../../features/chat'
 
-@connect({
-  state: (state) => ({
-    nickname: state.main.nickname,
-    chatWebSocket: state.main.chatWebSocket
-  }),
-  actions: (dispatch) => ({
-    addNotification: (notification) => dispatch(addNotification(notification)),
-    connectToChatWebSocket: () => dispatch(connectToChatWebSocket()),
-    disconnectFromChatWebSocket: () => dispatch(disconnectFromChatWebSocket()),
-    sendMessageToChatWebSocket: (message) => dispatch(sendMessageToChatWebSocket(message))
-  })
-})
 class ChatPage extends React.PureComponent {
 
   static propTypes = {
@@ -103,4 +91,18 @@ class ChatPage extends React.PureComponent {
   }
 }
 
-export default withTranslation()(ChatPage);
+const mapStateToProps = (state) => ({
+  nickname: state.main.nickname,
+  chatWebSocket: state.main.chatWebSocket
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addNotification: (notification) => dispatch(addNotification(notification)),
+  connectToChatWebSocket: () => dispatch(connectToChatWebSocket()),
+  disconnectFromChatWebSocket: () => dispatch(disconnectFromChatWebSocket()),
+  sendMessageToChatWebSocket: (message) => dispatch(sendMessageToChatWebSocket(message))
+});
+
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(ChatPage)
+);

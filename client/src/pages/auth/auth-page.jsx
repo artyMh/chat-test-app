@@ -1,23 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import connect from '../../common/decorators/connect';
 import { setNickname, clearNotifications, connectToChatWebSocket } from '../../common/store/actions/main';
 import Routes from '../../routing/routes';
 import NicknameForm from './nickname-form';
 
-
-@connect({
-  state: (state) => ({
-    nickname: state.main.nickname,
-    chatWebSocket: state.main.chatWebSocket
-  }),
-  actions: (dispatch) => ({
-    setNickname: (nickname) => dispatch(setNickname(nickname)),
-    clearNotifications: () => dispatch(clearNotifications()),
-    connectToChatWebSocket: () => dispatch(connectToChatWebSocket()),
-  })
-})
 class AuthPage extends React.PureComponent {
 
   static propTypes = {
@@ -66,4 +54,17 @@ class AuthPage extends React.PureComponent {
   }
 }
 
-export default withTranslation()(AuthPage);
+const mapStateToProps = (state) => ({
+  nickname: state.main.nickname,
+  chatWebSocket: state.main.chatWebSocket
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setNickname: (nickname) => dispatch(setNickname(nickname)),
+  clearNotifications: () => dispatch(clearNotifications()),
+  connectToChatWebSocket: () => dispatch(connectToChatWebSocket()),
+});
+
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(AuthPage)
+);
