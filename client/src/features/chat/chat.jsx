@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import ChatMessage from './components/chat-message';
@@ -29,13 +28,6 @@ const Chat = ({ userNickname, chatMessages, submitMessage, disconnectFromChat })
         </div>
       </>
     );
-}
-
-Chat.propTypes = {
-  userNickname: PropTypes.string.isRequired,
-  chatMessages: PropTypes.array.isRequired,
-  submitMessage: PropTypes.func.isRequired,
-  disconnectFromChat: PropTypes.func.isRequired
 }
 
 export default memo(Chat);

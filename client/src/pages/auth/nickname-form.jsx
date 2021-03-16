@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 const NicknameForm = ({ submitNickname }) => {
@@ -30,10 +29,6 @@ const NicknameForm = ({ submitNickname }) => {
   <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={nickname.length < 3}>{t('auth.form.buttonText')}</button>
     </form>
   );
-};
-
-NicknameForm.propTypes = {
-  submitNickname: PropTypes.func.isRequired
 };
 
 export default NicknameForm;

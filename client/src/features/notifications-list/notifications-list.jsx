@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 import Notification from './components/notification';
 
 const NotificationsList = ({ notifications = [] }) => (
@@ -17,9 +16,5 @@ const NotificationsList = ({ notifications = [] }) => (
       </div>
     </section>
 );
-
-NotificationsList.propTypes = {
-  notifications: PropTypes.array.isRequired
-};
 
 export default memo(NotificationsList);

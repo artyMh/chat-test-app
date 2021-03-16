@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 
 const ChatMessage = ({ type = 'user', nickname = '', date, message, isYourself = false }) => {
   let badgeClass;
@@ -22,14 +21,6 @@ const ChatMessage = ({ type = 'user', nickname = '', date, message, isYourself =
       </p>
     </div>
   );
-};
-
-ChatMessage.propTypes = {
-  type: PropTypes.oneOf(['chat', 'user']).isRequired,
-  nickname: PropTypes.string,
-  date: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  isYourself: PropTypes.bool
 };
 
 export default memo(ChatMessage);

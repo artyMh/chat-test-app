@@ -1,20 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import { setNickname, clearNotifications, connectToChatWebSocket } from '../../common/store/actions/main';
 import Routes from '../../routing/routes';
 import NicknameForm from './nickname-form';
 
 class AuthPage extends React.PureComponent {
-
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    nickname: PropTypes.string,
-    setNickname: PropTypes.func.isRequired,
-    clearNotifications: PropTypes.func.isRequired,
-    t: PropTypes.func.isRequired
-  };
 
   componentDidUpdate() {
     const { chatWebSocket: { connectionState }, history } = this.props

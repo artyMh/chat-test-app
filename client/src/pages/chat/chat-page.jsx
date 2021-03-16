@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import { addNotification, connectToChatWebSocket, disconnectFromChatWebSocket, sendMessageToChatWebSocket } from '../../common/store/actions/main';
 import Routes from '../../routing/routes';
@@ -8,14 +7,6 @@ import WsMessageCode from '../../common/models/websocket-messages-codes';
 import Chat from '../../features/chat'
 
 class ChatPage extends React.PureComponent {
-
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    nickname: PropTypes.string.isRequired,
-    chatWebSocket: PropTypes.object.isRequired,
-    addNotification: PropTypes.func.isRequired,
-    t: PropTypes.func.isRequired
-  };
 
   componentDidMount() {
     const { nickname, addNotification, history, t, chatWebSocket: { connectionState } } = this.props

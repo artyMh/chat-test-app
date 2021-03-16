@@ -21,9 +21,9 @@ Everything made from scratch, without any help of starter packs or else (no `cre
 * ~~Introduce features/modules folder(notifications list, chat window)~~
 * ~~Rework pages~~
 * ~~Get rid off decorators~~
-* Rewrite frontend on TypeScript(and use `eslint`)
-* Get rid off `prop-types`
+* ~~Get rid off `prop-types`~~
 * Update packages and node
+* Rewrite frontend on TypeScript(and use `eslint`)
 * Use bootstrap or antd or fluentui
 * Add unit tests
 * Transfer all chat logic to server(fe sending/receiving partial data, same to be)

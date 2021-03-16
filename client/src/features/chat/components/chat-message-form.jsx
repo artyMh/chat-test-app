@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 const ChatMessageForm = ({ submitMessage }) => {
@@ -29,10 +28,6 @@ const ChatMessageForm = ({ submitMessage }) => {
       </div>
     </form>
   );
-};
-
-ChatMessageForm.propTypes = {
-  submitMessage: PropTypes.func.isRequired,
 };
 
 export default ChatMessageForm;

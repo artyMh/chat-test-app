@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import { setInitialState } from './common/store/actions/main';
 import Header from './common/components/header';
@@ -8,13 +7,6 @@ import Footer from './common/components/footer';
 import NotificationsList from './features/notifications-list';
 
 class App extends React.PureComponent {
-
-  static propTypes = {
-    children: PropTypes.node,
-    t: PropTypes.func.isRequired,
-    i18n: PropTypes.object.isRequired,
-    notifications: PropTypes.array.isRequired
-  };
 
   state = {
     hasError: false
