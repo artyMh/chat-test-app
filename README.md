@@ -22,11 +22,12 @@ Everything made from scratch, without any help of starter packs or else (no `cre
 * ~~Rework pages~~
 * ~~Get rid off decorators~~
 * ~~Get rid off `prop-types`~~
-* Update packages and node
+* ~~Update packages and node~~
 * Rewrite frontend on TypeScript(and use `eslint`)
 * Use bootstrap or antd or fluentui
 * Add unit tests
 * Transfer all chat logic to server(fe sending/receiving partial data, same to be)
+* Check all script work at different OSs
 * Add server handling exceptions and closing conneciton gracefully
 * Add proper validation, anti-spam logic
 * Add using cfg where needed
@@ -36,3 +37,6 @@ Everything made from scratch, without any help of starter packs or else (no `cre
 * Add prettier ?
 * Add husky ?
 * Add yarn support ?
+
+## Known issues
+* `bundle-analyze` script will fail if `dist` frolder will not present at project directory
